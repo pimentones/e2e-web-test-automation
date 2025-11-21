@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class CatalogPage extends BasePage {
@@ -49,26 +49,22 @@ export class CatalogPage extends BasePage {
     });
   }
 
-  async fillProductName(value) {
-    await test.step(`Fill product ${value}`, async () => {
-      await this.fill(this.productNameInput, value);
-    });
-  }
-
   // TODO: improve function by going throught the list of products and checking stock
   async clickAddProduct(value) {
     await test.step(`Click add product`, async () => {
-      if ((await this.calculateQuantity()) > 0) {
+      const initialQuantity = await this.getQuantity();
+
+      if (initialQuantity > 0) {
         await this.click(this.addProductButton, value);
       }
     });
   }
 
-  async calculateQuantity() {
+  async getQuantity() {
     const itemQuantity = await this.productQuantityAvailable.innerText();
-    console.log("Available item quantity:", itemQuantity);
+    console.log("Available item quantity text:", itemQuantity);
     const stock = parseInt(itemQuantity);
-    console.log("Available item quantity:", stock);
+    console.log("Available item quantity parsed:", stock);
 
     return stock;
   }
@@ -79,25 +75,9 @@ export class CatalogPage extends BasePage {
     });
   }
 
-  async expectItemQuantityDecrease() {
+  async expectItemQuantityDecrease(initialQuantity, finalQuantity) {
     await test.step("Check quantity decreased", async () => {
-      const itemQuantity = this.calculateQuantity();
-
-      await this.expectToBeVisible(this.productQuantity);
-    });
-  }
-
-  async expectProductAddedToCart() {
-    await test.step("Check product was added to cart", async () => {
-      await this.expectToBeVisible(this.productName);
-      await this.expectToBeVisible(this.productPrice);
-      await this.expectToBeVisible(this.productQuantity);
-    });
-  }
-
-  async expectcartTitle() {
-    await test.step("Check cart title is visible", async () => {
-      await this.expectToBeVisible(this.cartTitle);
+      expect(finalQuantity).toBe(initialQuantity - 1);
     });
   }
 }

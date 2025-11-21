@@ -42,11 +42,17 @@
 
 challenge1: After adding the product make the locator to uniquely identify the product added. To move on to other tests just added a quantity which was not on the list.
 
-2. Create catalog page locators for scenario Add an item to the cart from the catalog
-   challenge1: extract the number of units from each article
-   learned innertext() returns visible text and that's why it should be used instead of textContent().
-   how to use parseInt()
+challenge2: Create catalog page locators for scenario Add an item to the cart from the catalog
+challenge1: extract the number of units from each article
+learned innertext() returns visible text and that's why it should be used instead of textContent().
+how to use parseInt()
 
-3. Learned how to call a function inside a if statement
-   this (await this.calculateQuantity() > 0) {}
-   instead of (this.calculateQuantity > 0) {}
+challenge3: Learned how to call a function inside a if statement
+this (await this.calculateQuantity() > 0) {}
+instead of (this.calculateQuantity > 0) {}
+
+challenge4: Decison to put test cases which need more than one page to be placed at the store. If the user flow is within one page it stays on the [module].pom.spec.js
+
+challenge5: Had a really hard time implementing how to calculate and assert the item quanty decreased
+
+2.

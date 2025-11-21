@@ -39,18 +39,18 @@ export class CartPage extends BasePage {
     });
   }
 
+  async expectCartTitle() {
+    await test.step("Check cart title is visible", async () => {
+      await this.expectToBeVisible(this.cartTitle);
+    });
+  }
+
   async expectProductAddedToCart() {
     await test.step("Check product was added to cart", async () => {
       await this.expectToBeVisible(this.itemName);
       await this.expectToBeVisible(this.itemPrice);
       await this.expectToBeVisible(this.itemQuantity);
       await this.expectToBeVisible(this.itemTotalValue);
-    });
-  }
-
-  async expectCartTitle() {
-    await test.step("Check cart title is visible", async () => {
-      await this.expectToBeVisible(this.cartTitle);
     });
   }
 }
