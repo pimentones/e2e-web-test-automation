@@ -33,3 +33,20 @@
 
 - 4.1. Decision 1: Use .env default code coming with playwright installation or use simpler one used during course
   Despite the default .env code provides a better strucutre, I went with the simpler code given the project's structure is straightforward and the project is not intended to run tests in different environments.
+
+5. Create base page with naviagte, click, fill and expect methods
+
+# 21.11.2025
+
+1. Create inventory page locators for scenario Add a new product to inventory
+
+challenge1: After adding the product make the locator to uniquely identify the product added. To move on to other tests just added a quantity which was not on the list.
+
+2. Create catalog page locators for scenario Add an item to the cart from the catalog
+   challenge1: extract the number of units from each article
+   learned innertext() returns visible text and that's why it should be used instead of textContent().
+   how to use parseInt()
+
+3. Learned how to call a function inside a if statement
+   this (await this.calculateQuantity() > 0) {}
+   instead of (this.calculateQuantity > 0) {}

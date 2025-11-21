@@ -5,7 +5,7 @@ export class BasePage {
     this.page = page;
   }
 
-  async naviagteToUrl(url) {
+  async navigateToUrl(url) {
     await test.step(`Navigate to URL: ${url}`, async () => {
       await this.page.goto(url);
     });
