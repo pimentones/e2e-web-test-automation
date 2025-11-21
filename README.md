@@ -29,9 +29,7 @@
    - 3.10. Scenario: Prevent adding out-of-stock items
    - 3.11. Scenario: Display past orders
 
-4. Install and config playwright
+4. Install and config playwright plus project structure
 
 - 4.1. Decision 1: Use .env default code coming with playwright installation or use simpler one used during course
   Despite the default .env code provides a better strucutre, I went with the simpler code given the project's structure is straightforward and the project is not intended to run tests in different environments.
-
-- 4.2.
