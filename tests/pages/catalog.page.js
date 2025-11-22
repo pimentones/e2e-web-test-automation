@@ -62,9 +62,7 @@ export class CatalogPage extends BasePage {
 
   async getQuantity() {
     const itemQuantity = await this.productQuantityAvailable.innerText();
-    console.log("Available item quantity text:", itemQuantity);
     const stock = parseInt(itemQuantity);
-    console.log("Available item quantity parsed:", stock);
 
     return stock;
   }
